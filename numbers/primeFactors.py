@@ -19,5 +19,5 @@ def primtFactorsList(x: int):
 			if (j not in lst):
 				lst.append(j)
 	return lst
-primeFactors(int(sys.argv[1]))
+
 print(primtFactorsList(int(sys.argv[1])))
