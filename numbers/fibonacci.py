@@ -1,4 +1,4 @@
-import sys
+from sys import argv
 
 # generate fibonacci numbers up to user defined number and return list
 
@@ -29,5 +29,5 @@ class fibonacci:
 		print()
 		return
 
-print(fibonacci.fibList(int(sys.argv[1])))
-fibonacci.fibPrint(int(sys.argv[1]))
+print(fibonacci.fibList(int(argv[1])))
+fibonacci.fibPrint(int(argv[1]))

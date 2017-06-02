@@ -1,4 +1,4 @@
-import sys
+from sys import argv
 
 def primeFactors(x: int):
 	for i in range (1, x // 2):
@@ -20,4 +20,4 @@ def primtFactorsList(x: int):
 				lst.append(j)
 	return lst
 
-print(primtFactorsList(int(sys.argv[1])))
+print(primtFactorsList(int(argv[1])))

@@ -12,13 +12,13 @@ import sys
 # we have lists aka array. list = [item, item1, item2]
 
 def fizBuzz(size: int):
-	for i in range (0, size):
-		if (i != 0 and i % 5 == 0 and i % 3 == 0):
+	for i in range (1, size):
+		if (i != 0 and i % 15 == 0):
 			print("fizBuzz ", i)
 		elif (i != 0 and i % 3 == 0):
 			print("fizz ", i)
 		elif (i != 0 and i % 5 == 0):
 			print("buzz ", i)
-	return 1
+	return
 
 fizBuzz(int(sys.argv[1]) + 1)
