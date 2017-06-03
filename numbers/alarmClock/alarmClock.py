@@ -1,6 +1,7 @@
 import subprocess
 import time
 from threading import Timer
+import datetime
 
 class playsound:
 	def timerSound():
@@ -10,7 +11,7 @@ class playsound:
 
 	def alarmSound():
 		audio = "./sounds/delt_goblin-target.wav"
-		return_code = subprecess.call(["afplay", audio])
+		return_code = subprocess.call(["afplay", audio])
 		return return_code
 
 class clock:
@@ -30,22 +31,34 @@ class clock:
 					second = int(timelen - (time.time() - start)) + 1
 					print (second)
 			print (0)
-			for i in range(10):
-				playsound.timerSound()
+			for i in range(1):
+				playsound.alarmSound()
 		except KeyboardInterrupt:
-			return
+			print("timer deleted")
 
-	#this one is threaded so we can run other things at the exact same time
+	#this one is threaded so we can run other things at the same time
 	def timer2(timelen: int):
 		try:
 			Timer(timelen, playsound.timerSound, ()).start()
 		except KeyboardInterrupt:
-			return
+			print("timer deleted")
+
 	#alarm will work like an alarm clock.
-	def alarm(time: int):
-		pass
-		# how should i accept the time and date?
-		# 6 - 12 pm or am. alwasy the upcomming day?
+	# given a time in hour:minute format will alarm at the given time.
+	# next step is to let the user use 12 hour format with AM PM specification
+	# convert that to 23 hour format
+	def alarm(mytime: str):
+		ctime = time.strftime("%H:%M")
+		print(ctime)
+		print("alarm set for ", mytime)
+		try:
+			while ctime != mytime:
+				time.sleep(1) # this makes it so we arent using all the cpu power checking the time as fast as possible
+				ctime = time.strftime("%H:%M")
+			for i in range(30):
+				playsound.alarmSound()
+		except KeyboardInterrupt:
+			print("alarm deleted")
 
 
 def main():
@@ -54,5 +67,7 @@ def main():
 	#determine whether the user wants to use the timer or set an alarm
 	# would be cool to open a window and make a gui for this as well
 	# need to learn how to repeat the play until stopped by the user
-clock.timer(5)
+
+#clock.timer(5)
+clock.alarm("00:22")
 clock.displayTime()
