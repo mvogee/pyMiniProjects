@@ -27,17 +27,17 @@ class clock:
 		second = totaltime
 		minutes = 00
 		hours = 00
-		if second > 60:
+		if second >= 60:
 			minutes = second // 60
 			second %= 60
-		if minutes > 60:
+		if minutes >= 60:
 			hours = minutes // 60
 			minutes %= 60
 		if (second == 0 and minutes > 0):
-			second = 59
+			second = 60
 			minutes -= 1
-		if (minutes == 0 and hours > 0):
-			minutes = 59
+		if (minutes == 0 and second == 0 and hours > 0):
+			minutes = 60
 			hours -= 1
 		print ('%02d:%02d:%02d' % (hours, minutes, second))
 		try:
@@ -45,13 +45,12 @@ class clock:
 				if (second == 0 and minutes > 0):
 					second = 60
 					minutes -= 1
-				if (minutes == 0 and hours > 0):
+				if (minutes == 0 and second == 0 and hours > 0):
 					minutes = 60
 					hours -= 1
 				if (int(timelen - (time.time() - start)) < totaltime):
 					totaltime = int(timelen - (time.time() - start))
 					second -= 1
-					#second = int(timelen - (time.time() - start)) % 60
 					print ('%02d:%02d:%02d' % (hours, minutes, second))
 				time.sleep(0.2)
 			for i in range(10):
@@ -91,6 +90,6 @@ def main():
 	# would be cool to open a window and make a gui for this as well
 	# need to learn how to repeat the play until stopped by the user
 
-clock.timer(15700)
+clock.timer(71)
 #clock.alarm("00:22")
 clock.displayTime()
