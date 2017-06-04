@@ -23,16 +23,39 @@ class clock:
 	# to display minutes and hours need to make seperate channels to deal with those
 	def timer(timelen: int):
 		start = time.time()
-		second = int(timelen - (time.time() - start)) + 1
-		print (second)
+		totaltime = int(timelen - (time.time() - start))
+		second = totaltime
+		minutes = 00
+		hours = 00
+		if second > 60:
+			minutes = second // 60
+			second %= 60
+		if minutes > 60:
+			hours = minutes // 60
+			minutes %= 60
+		if (second == 0 and minutes > 0):
+			second = 59
+			minutes -= 1
+		if (minutes == 0 and hours > 0):
+			minutes = 59
+			hours -= 1
+		print ('%02d:%02d:%02d' % (hours, minutes, second))
 		try:
 			while time.time() - start < timelen:
-				if (int(timelen - (time.time() - start)) + 1 < second):
-					second = int(timelen - (time.time() - start)) + 1
-					print (second)
-			print (0)
-			for i in range(1):
-				playsound.alarmSound()
+				if (second == 0 and minutes > 0):
+					second = 60
+					minutes -= 1
+				if (minutes == 0 and hours > 0):
+					minutes = 60
+					hours -= 1
+				if (int(timelen - (time.time() - start)) < totaltime):
+					totaltime = int(timelen - (time.time() - start))
+					second -= 1
+					#second = int(timelen - (time.time() - start)) % 60
+					print ('%02d:%02d:%02d' % (hours, minutes, second))
+				time.sleep(0.2)
+			for i in range(10):
+				playsound.timerSound()
 		except KeyboardInterrupt:
 			print("timer deleted")
 
@@ -68,6 +91,6 @@ def main():
 	# would be cool to open a window and make a gui for this as well
 	# need to learn how to repeat the play until stopped by the user
 
-#clock.timer(5)
-clock.alarm("00:22")
+clock.timer(15700)
+#clock.alarm("00:22")
 clock.displayTime()
