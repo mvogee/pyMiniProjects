@@ -33,12 +33,6 @@ class clock:
 		if minutes >= 60:
 			hours = minutes // 60
 			minutes %= 60
-		if (second == 0 and minutes > 0):
-			second = 60
-			minutes -= 1
-		if (minutes == 0 and second == 0 and hours > 0):
-			minutes = 60
-			hours -= 1
 		print ('%02d:%02d:%02d' % (hours, minutes, second))
 		try:
 			while time.time() - start < timelen:
@@ -52,7 +46,7 @@ class clock:
 					totaltime = int(timelen - (time.time() - start))
 					second -= 1
 					print ('%02d:%02d:%02d' % (hours, minutes, second))
-				time.sleep(0.2)
+				time.sleep(0.2) # give the cpu that juicy break time :D
 			for i in range(10):
 				playsound.timerSound()
 		except KeyboardInterrupt:
@@ -84,12 +78,11 @@ class clock:
 
 
 def main():
-	pass
+	clock.timer(71)
+	#clock.alarm("00:22")
+	clock.displayTime()
 	#all the setup for the ui and the user input
 	#determine whether the user wants to use the timer or set an alarm
 	# would be cool to open a window and make a gui for this as well
 	# need to learn how to repeat the play until stopped by the user
-
-clock.timer(71)
-#clock.alarm("00:22")
-clock.displayTime()
+main()
