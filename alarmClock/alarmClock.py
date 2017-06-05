@@ -69,7 +69,7 @@ class clock:
 		print("alarm set for ", mytime)
 		try:
 			while ctime != mytime:
-				time.sleep(1) # this makes it so we arent using all the cpu power checking the time as fast as possible
+				time.sleep(1) # really only need to run once every second for this
 				ctime = time.strftime("%H:%M")
 			for i in range(30):
 				playsound.alarmSound()
@@ -81,8 +81,10 @@ def main():
 	clock.timer(71)
 	#clock.alarm("00:22")
 	clock.displayTime()
+	# ask user what they would like to use
+	# timer
+	# alarm
 	#all the setup for the ui and the user input
 	#determine whether the user wants to use the timer or set an alarm
 	# would be cool to open a window and make a gui for this as well
-	# need to learn how to repeat the play until stopped by the user
 main()
