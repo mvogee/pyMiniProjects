@@ -64,7 +64,6 @@ class clock:
 	#alarm will work like an alarm clock.
 	# given a time in hour:minute format will alarm at the given time.
 	def alarm(mytime: str):
-		print("realtime alarm: ", mytime)
 		ctime = time.strftime("%H:%M")
 		try:
 			while ctime != mytime:

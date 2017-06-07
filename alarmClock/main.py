@@ -1,4 +1,4 @@
-from alarmClock import clock
+#from alarmClock import clock
 from setup import setup
 
 def display_ussage():
