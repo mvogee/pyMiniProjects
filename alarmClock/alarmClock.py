@@ -17,7 +17,6 @@ class playsound:
 class clock:
 
 	#timer will count down from the given time
-	# to display minutes and hours need to make seperate channels to deal with those
 	#takes total number of seconds as parameter
 	def timer(timelen: int):
 		start = time.time()
