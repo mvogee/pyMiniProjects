@@ -7,4 +7,8 @@ def isPalindrome(s: str, kSense: bool):
 			return (False)
 	return (True)
 
-print(isPalindrome("racecar", True))
+userin = input("enter a word: ")
+if (isPalindrome(userin, False) == False):
+	print("%s is not a palindrome" % (userin))
+else:
+	print("%s is a palanindrome" % (userin))
