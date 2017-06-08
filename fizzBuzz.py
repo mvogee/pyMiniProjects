@@ -3,11 +3,11 @@ from sys import argv
 def fizBuzz(size: int):
 	for i in range (1, size):
 		if (i % 15 == 0):
-			print("fizBuzz ", i)
+			print("FizzBuzz ", i)
 		elif (i % 3 == 0):
-			print("fizz ", i)
+			print("Fizz ", i)
 		elif (i % 5 == 0):
-			print("buzz ", i)
+			print("Buzz ", i)
 
 if len(argv) > 1:
 	fizBuzz(int(argv[1]) + 1)
