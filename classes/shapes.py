@@ -1,4 +1,4 @@
-
+from math import sqrt
 # the __ before the variables means they are private
 # self refers to the self object
 # __init__ is a constructor that can be used for the object initialization
@@ -67,27 +67,42 @@ class Rectangle(Shape):
 		super(Rectangle, self).setPerimeter((self.__height * 2) + (self.__length * 2))
 		super(Rectangle, self).setArea(self.__height * self.__length)
 
-# class Triangle(Shape):
-# 	__side1 = 0.0
-# 	__side2 = 0.0
-# 	__side3 = 0.0
-#
-# 	def __init__(self, side1, side2, side3):
-# 		self.__side1 = side1
-# 		self.__side2 = side2
-# 		self.__side3 = side3
-# 		super(Triangle, self).__init__(3, )
-#
-# 	def setSide(self, sidelen, whichside):
-# 		if (whichside == 1):
-# 			self.__side1 == sidelen
-# 		elif(whichside == 2):
-# 			self.__side2 == sidelen
-# 		else:
-# 			self.__side3 == sidelen
-# 		super.setArea =
-#
-# 	def triArea(slef)
+class Triangle(Shape):
+	__side1 = 0.0
+	__side2 = 0.0
+	__side3 = 0.0
+
+	def __init__(self, side1, side2, side3):
+		self.__side1 = side1
+		self.__side2 = side2
+		self.__side3 = side3
+		super(Triangle, self).__init__(3, self.triangleArea(), self.trianglePerim())
+
+	def triangleArea(self):
+		p = self.trianglePerim() / 2
+		area = sqrt(p*(p - self.__side1)*(p - self.__side2)*(p - self.__side3))
+		return (area)
+
+	def trianglePerim(self):
+		return (self.__side1 + self.__side2 + self.__side3)
+
+	def setSide(self, sidelen, whichside):
+		if (whichside == 1):
+			self.__side1 == sidelen
+		elif(whichside == 2):
+			self.__side2 == sidelen
+		else:
+			self.__side3 == sidelen
+		super(Triangle, self).setArea(triangleArea())
+		super(Triangle, self).setPerimeter(trianglePerim())
+
+	def getSide(self, whichside):
+		if (whichside == 1):
+			return (self.__side1)
+		elif (whichside == 2):
+			return (self.__side2)
+		else:
+			return (self.__side3)
 
 
 mysquare = Square(5)
@@ -101,3 +116,9 @@ myrectangle = Rectangle(4, 2)
 print(myrectangle.getArea())
 myrectangle.setHeight(5)
 print(myrectangle.getArea())
+
+print()
+
+mytri = Triangle(13.4, 11, 20.1)
+print(mytri.getArea())
+print(mytri.getPerimeter())
