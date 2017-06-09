@@ -1,4 +1,5 @@
 from math import sqrt
+from math import pi
 # the __ before the variables means they are private
 # self refers to the self object
 # __init__ is a constructor that can be used for the object initialization
@@ -109,22 +110,67 @@ class Triangle(Shape):
 			return True
 		return False
 
+class Circle(Shape):
+	__radious = 0.0
+	__diameter = 0.0
 
+	def __init__(self, radious, diameter=None):
+		self.__radious = radious
+		if (not diameter == None):
+			self.__diameter = diameter
+		else:
+			self.__diameter = radious * 2
+		super(Circle, self).__init__(1, self.circum(), self.circleArea())
+
+	def circum(self):
+		return (2 * pi * self.__radious)
+
+	def circleArea(self):
+		return (pi * self.__radious**2)
+
+	def setRadious(self, radious):
+		self.__radious = radious
+		self.__diameter = radious * 2
+		super(Circle, self).setArea(self.circleArea())
+		super(Circle, self).setPerimeter(self.circum())
+
+	def setDiameter(self, diameter):
+		self.__diameter = diameter
+		self.__radious = diameter / 2
+		super(Circle, self).setArea(circleArea())
+		super(Circle, self).setPerimeter(circum())
+
+	def getRadious(self):
+		return (self.__radious)
+
+	def getDiameter(self):
+		return (self.__diameter)
+
+print("sqaure\n")
 mysquare = Square(5)
 print(mysquare.getArea())
 mysquare.setSidelen(10)
 print(mysquare.getArea())
 
-print()
+print("\nrecatangle\n")
 
 myrectangle = Rectangle(4, 2)
 print(myrectangle.getArea())
 myrectangle.setHeight(5)
 print(myrectangle.getArea())
 
-print()
+print("\ntriangle\n")
 
 mytri = Triangle(20, 20, 20)
 print(mytri.getArea())
 print(mytri.getPerimeter())
 print(mytri.isEquilat())
+
+print("\ncircle")
+mycircle = Circle(10)
+print(mycircle.getPerimeter())
+print(mycircle.getArea())
+mycircle.setRadious(12)
+print(mycircle.getPerimeter())
+print(mycircle.getArea())
+print(mycircle.getRadious())
