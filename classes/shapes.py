@@ -104,6 +104,11 @@ class Triangle(Shape):
 		else:
 			return (self.__side3)
 
+	def isEquilat(self):
+		if (self.__side1 == self.__side2 == self.__side3):
+			return True
+		return False
+
 
 mysquare = Square(5)
 print(mysquare.getArea())
@@ -119,6 +124,7 @@ print(myrectangle.getArea())
 
 print()
 
-mytri = Triangle(13.4, 11, 20.1)
+mytri = Triangle(20, 20, 20)
 print(mytri.getArea())
 print(mytri.getPerimeter())
+print(mytri.isEquilat())
